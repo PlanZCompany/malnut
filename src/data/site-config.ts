@@ -65,7 +65,7 @@ export const SECTION_IMAGES: Record<string, SectionImage> = {
 
 export const HERO_CONFIG = {
   ...HERO_CONTENT,
-  backgroundImage: "/images/hero-bg.jpg",
+  backgroundImage: "/images/hero-bg.png",
 } as const;
 
 export const SITE_SECTION_LIST: SiteSectionConfig[] = [

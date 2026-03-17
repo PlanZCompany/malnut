@@ -8,12 +8,12 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteSidebar
-        logoSrc="/images/logo.webp"
+        logoSrc="/images/logo.png"
         logoAlt="Malnut logo"
         companyName="Malnut"
       />
 
-      <main className="lg:pl-72">
+      <main className="lg:pl-72 bg-linear-to-l from-[#445D23]/40 via-white to-[#445D23]/40">
         <HeroSection />
 
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">

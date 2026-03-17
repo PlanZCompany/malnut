@@ -35,7 +35,7 @@ function scrollToSection(sectionId: string) {
 
 function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Section navigation" className="flex flex-col gap-2">
+    <nav aria-label="Section navigation" className="flex flex-col gap-3">
       {SITE_NAV_ITEMS.map((item) => (
         <button
           key={item.id}
@@ -44,7 +44,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
             scrollToSection(item.id);
             onNavigate?.();
           }}
-          className="text-left text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="text-left text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
         >
           {item.label}
         </button>
@@ -63,7 +63,7 @@ function ContactButton() {
 
 function SidebarBrand({ logoSrc, logoAlt, companyName }: SiteSidebarProps) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 py-2 px-4">
       <div className="relative h-10 w-10 overflow-hidden rounded-md">
         <Image
           src={logoSrc}
@@ -93,27 +93,27 @@ export function SiteSidebar({
 
   return (
     <>
-      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:border-r lg:bg-background">
-        <div className="flex h-full flex-col px-6 py-8">
+      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:border-r">
+        <div className="flex h-full flex-col">
           <SidebarBrand
             logoSrc={logoSrc}
             logoAlt={logoAlt}
             companyName={companyName}
           />
 
-          <Separator className="my-6" />
+          <Separator />
 
-          <div className="flex-1">
+          <div className="flex-1 small_circle_gradient py-4 p-3">
             <SidebarNav />
           </div>
 
-          <div className="pt-6">
+          <div className="pt-6 pb-6 px-4">
             <ContactButton />
           </div>
         </div>
       </aside>
 
-      <div className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur lg:hidden">
+      <div className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur lg:hidden small_circle_gradient">
         <div className="flex items-center justify-between px-4 py-3">
           <SidebarBrand
             logoSrc={logoSrc}
@@ -132,12 +132,12 @@ export function SiteSidebar({
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="left" className="w-[300px] sm:w-[340px]">
+            <SheetContent side="left" className="w-75 sm:w-85">
               <SheetHeader className="pb-4">
                 <SheetTitle>Navigation</SheetTitle>
               </SheetHeader>
 
-              <div className="flex h-full flex-col">
+              <div className="flex h-full flex-col small_circle_gradient py-4 px-4">
                 <SidebarNav onNavigate={() => setIsOpen(false)} />
 
                 <div className="mt-6">

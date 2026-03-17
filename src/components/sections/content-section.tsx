@@ -22,7 +22,7 @@ function renderRow(row: SectionRow, index: number) {
     return (
       <p
         key={`${row.type}-${index}`}
-        className="text-base leading-7 text-muted-foreground"
+        className="text-base md:text-xl leading-7 text-[#5E351E]"
       >
         {row.value}
       </p>
@@ -32,10 +32,10 @@ function renderRow(row: SectionRow, index: number) {
   return (
     <div key={`${row.type}-${index}`} className="space-y-3">
       {row.title ? (
-        <h3 className="text-base font-semibold">{row.title}</h3>
+        <h3 className="text-base md:text-xl font-semibold">{row.title}</h3>
       ) : null}
 
-      <ul className="space-y-2 text-base leading-7 text-muted-foreground">
+      <ul className="space-y-2 text-base md:text-xl leading-7 text-[#5E351E]">
         {row.items.map((item) => (
           <li key={item} className="flex gap-2">
             <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" />
@@ -61,7 +61,7 @@ export function ContentSection({
     <section id={id} className={className}>
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className={isReverse ? "lg:order-2" : undefined}>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
               src={image.src}
               alt={image.alt}

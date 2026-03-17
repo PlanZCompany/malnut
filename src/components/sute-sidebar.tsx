@@ -53,7 +53,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-function ContactButton() {
+export function ContactButton() {
   return (
     <Button asChild className="w-full">
       <a href={`mailto:${CONTACT_INFO.email}`}>Contact</a>

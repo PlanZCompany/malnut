@@ -9,9 +9,6 @@ export const metadata: Metadata = {
   title: "Malnut – EU-Wide Wholesale Delivery",
   description:
     "Fast, reliable, and secure weekly wholesale delivery of nuts, dried fruits, and seeds across the entire European Union. No quantity limits.",
-  icons: {
-    icon: "/images/logo.png",
-  },
 };
 
 export default function RootLayout({

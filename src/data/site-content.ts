@@ -33,6 +33,7 @@ export type SectionRow =
       type: "list";
       title?: string;
       items: string[];
+      columns?: 2;
     };
 
 export const COMPANY_NAME = "Malnut";
@@ -122,6 +123,7 @@ export const PACKAGE_SIZES_ROWS: SectionRow[] = [
   {
     type: "list",
     items: PACKAGE_SIZES.map((size) => size.label),
+    columns: 2,
   },
 ];
 

@@ -44,7 +44,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
             scrollToSection(item.id);
             onNavigate?.();
           }}
-          className="text-left text-base font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+          className="text-left text-base font-medium text-walnut transition-colors hover:text-espresso cursor-pointer"
         >
           {item.label}
         </button>
@@ -53,9 +53,9 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-export function ContactButton() {
+export function ContactButton({ size = 'default' }: { size?: 'default' | 'lg' }) {
   return (
-    <Button asChild className="w-full">
+    <Button asChild className="w-full" size={size}>
       <a href={`mailto:${CONTACT_INFO.email}`}>Contact</a>
     </Button>
   );
@@ -64,7 +64,7 @@ export function ContactButton() {
 function SidebarBrand({ logoSrc, logoAlt, companyName }: SiteSidebarProps) {
   return (
     <div className="flex items-center gap-3 py-2 px-4">
-      <div className="relative h-10 w-10 overflow-hidden rounded-md">
+      <div className="relative h-10 w-10 overflow-hidden bg-cream">
         <Image
           src={logoSrc}
           alt={logoAlt}
@@ -76,7 +76,7 @@ function SidebarBrand({ logoSrc, logoAlt, companyName }: SiteSidebarProps) {
       </div>
 
       {companyName ? (
-        <span className="text-sm font-semibold tracking-wide">
+        <span className="text-lg font-semibold tracking-wide text-espresso">
           {companyName}
         </span>
       ) : null}
@@ -93,7 +93,7 @@ export function SiteSidebar({
 
   return (
     <>
-      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:border-r">
+      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:border-r bg-cream">
         <div className="flex h-full flex-col">
           <SidebarBrand
             logoSrc={logoSrc}
@@ -113,7 +113,7 @@ export function SiteSidebar({
         </div>
       </aside>
 
-      <div className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur lg:hidden small_circle_gradient">
+      <div className="sticky top-0 z-40 border-b bg-cream/95 backdrop-blur lg:hidden small_circle_gradient">
         <div className="flex items-center justify-between px-4 py-3">
           <SidebarBrand
             logoSrc={logoSrc}

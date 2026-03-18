@@ -1,125 +1,138 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { SectionRow } from "@/data/site-content";
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+import { ChevronLeft, ChevronRight, Nut } from 'lucide-react'
+import { SectionRow } from '@/data/site-content'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "../ui/carousel";
-import { ContactButton } from "../sute-sidebar";
+} from '../ui/carousel'
+import { ContactButton } from '../sute-sidebar'
 
-export type ContentSectionLayout = "row" | "reverse";
+export type ContentSectionLayout = 'row' | 'reverse'
 
 export type ContentSectionImage = {
-  src: string;
-  alt: string;
-};
+  src: string
+  alt: string
+}
 
 export type ContentSectionProps = {
-  id: string;
-  heading: string;
-  images: ContentSectionImage[];
-  rows: SectionRow[];
-  layout?: ContentSectionLayout;
-  className?: string;
-  button?: boolean;
-};
+  id: string
+  heading: string
+  images: ContentSectionImage[]
+  rows: SectionRow[]
+  layout?: ContentSectionLayout
+  className?: string
+  button?: boolean
+}
 
 function renderRow(row: SectionRow, index: number) {
-  if (row.type === "text") {
+  if (row.type === 'text') {
     return (
       <p
         key={`${row.type}-${index}`}
-        className="text-base md:text-xl leading-7 text-muted-foreground"
+        className="text-base md:text-xl leading-7 text-walnut"
       >
         {row.value}
       </p>
-    );
+    )
   }
 
   return (
-    <div key={`${row.type}-${index}`} className="space-y-3">
+    <div
+      key={`${row.type}-${index}`}
+      className="space-y-3"
+    >
       {row.title ? (
-        <h3 className="text-base md:text-xl font-semibold">{row.title}</h3>
+        <h3 className="text-base md:text-xl font-semibold text-espresso">{row.title}</h3>
       ) : null}
 
-      <ul className="space-y-2 text-base md:text-xl leading-7 text-muted-foreground">
+      <ul className={row.columns === 2 ? "grid grid-cols-2 gap-2 text-base md:text-xl leading-7 text-walnut" : "space-y-2 text-base md:text-xl leading-7 text-walnut"}>
         {row.items.map((item) => (
-          <li key={item} className="flex gap-2">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" />
+          <li
+            key={item}
+            className="flex gap-2"
+          >
+            <Nut className="mt-1 h-5 w-5 shrink-0 text-[#4A7C4E]" />
             <span>{item}</span>
           </li>
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
 function SectionMedia({
   images,
   heading,
 }: {
-  images: ContentSectionImage[];
-  heading: string;
+  images: ContentSectionImage[]
+  heading: string
 }) {
   if (images.length <= 1) {
-    const image = images[0];
+    const image = images[0]
 
-    if (!image) return null;
+    if (!image) return null
 
     return (
-      <div className="relative mx-auto aspect-[4/5] w-full max-w-sm rounded-2xl">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 33vw"
-        />
+      <div className="relative mx-auto w-[calc(100%-30px)] max-w-sm">
+        <div className="absolute inset-0 z-0 bg-pistachio rotate-3 lg:rotate-9"></div>
+        <div className="relative z-10 aspect-4/5">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
+        </div>
       </div>
-    );
+    )
   }
 
   return (
-    <Carousel
-      opts={{
-        loop: true,
-        align: "start",
-      }}
-      className="mx-auto w-full max-w-sm"
-      aria-label={`${heading} image gallery`}
-    >
-      <CarouselContent>
-        {images.map((image) => (
-          <CarouselItem key={image.src}>
-            <div className="relative aspect-[4/6]">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+    <div className="relative mx-auto w-[calc(100%-30px)] max-w-sm">
+      <div className="absolute inset-0 z-0 bg-pistachio rotate-3 lg:rotate-9"></div>
+      <Carousel
+        opts={{
+          loop: true,
+          align: 'start',
+        }}
+        className="relative z-10 w-full"
+        aria-label={`${heading} image gallery`}
+      >
+        <CarouselContent>
+          {images.map((image) => (
+            <CarouselItem key={image.src}>
+              <div className="relative aspect-4/6">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
 
-      <CarouselPrevious className="left-3 md:-left-10">
-        <ChevronLeft className="h-4 w-4" />
-        <span className="sr-only">Previous slide</span>
-      </CarouselPrevious>
+        <CarouselPrevious className="left-3 md:-left-10">
+          <ChevronLeft className="h-4 w-4" />
+          <span className="sr-only">Previous slide</span>
+        </CarouselPrevious>
 
-      <CarouselNext className="right-3 md:-right-10">
-        <ChevronRight className="h-4 w-4" />
-        <span className="sr-only">Next slide</span>
-      </CarouselNext>
-    </Carousel>
-  );
+        <CarouselNext className="right-3 md:-right-10">
+          <ChevronRight className="h-4 w-4" />
+          <span className="sr-only">Next slide</span>
+        </CarouselNext>
+      </Carousel>
+    </div>
+  )
 }
 
 export function ContentSection({
@@ -127,23 +140,28 @@ export function ContentSection({
   heading,
   images,
   rows,
-  layout = "row",
+  layout = 'row',
   className,
   button = false,
 }: ContentSectionProps) {
-  const isReverse = layout === "reverse";
+  const isReverse = layout === 'reverse'
 
   return (
-    <section id={id} className={className}>
+    <section
+      id={id}
+      className={cn("scroll-mt-24 lg:scroll-mt-8", className)}
+    >
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-        <div className={`${isReverse ? "lg:order-2" : undefined} relative`}>
-          <div className="absolute z-0 inset-0 md:inset-y-0 inset-x-22 bg-[#445D23] rotate-9"></div>
-          <SectionMedia images={images} heading={heading} />
+        <div className={isReverse ? 'lg:order-2' : undefined}>
+          <SectionMedia
+            images={images}
+            heading={heading}
+          />
         </div>
 
-        <div className={isReverse ? "lg:order-1" : undefined}>
+        <div className={isReverse ? 'lg:order-1' : undefined}>
           <div className="mx-auto max-w-2xl space-y-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-espresso">
               {heading}
             </h2>
 
@@ -152,13 +170,13 @@ export function ContentSection({
             </div>
 
             {!!button && (
-              <div className="w-fit min-w-[200px]">
-                <ContactButton />
+              <div className="w-full sm:w-fit sm:min-w-50">
+                <ContactButton size="lg" />
               </div>
             )}
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

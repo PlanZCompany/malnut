@@ -132,6 +132,22 @@ export const SECTION_IMAGES: Record<string, SectionImage[]> = {
       src: "/images/products/11.jpeg",
       alt: "Seeds suitable for wholesale trade and resale",
     },
+    {
+      src: "/images/products/12.jpeg",
+      alt: "Seeds suitable for wholesale trade and resale",
+    },
+    {
+      src: "/images/products/13.jpeg",
+      alt: "Seeds suitable for wholesale trade and resale",
+    },
+    {
+      src: "/images/products/14.jpeg",
+      alt: "Seeds suitable for wholesale trade and resale",
+    },
+    {
+      src: "/images/products/15.jpeg",
+      alt: "Seeds suitable for wholesale trade and resale",
+    },
   ],
   clients: [
     {

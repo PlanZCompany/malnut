@@ -1,37 +1,37 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { cn } from '@/lib/utils'
-import { ChevronLeft, ChevronRight, Nut } from 'lucide-react'
-import { SectionRow } from '@/data/site-content'
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, Nut } from "lucide-react";
+import { SectionRow } from "@/data/site-content";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from '../ui/carousel'
-import { ContactButton } from '../sute-sidebar'
+} from "../ui/carousel";
+import { ContactButton } from "../sute-sidebar";
 
-export type ContentSectionLayout = 'row' | 'reverse'
+export type ContentSectionLayout = "row" | "reverse";
 
 export type ContentSectionImage = {
-  src: string
-  alt: string
-}
+  src: string;
+  alt: string;
+};
 
 export type ContentSectionProps = {
-  id: string
-  heading: string
-  images: ContentSectionImage[]
-  rows: SectionRow[]
-  layout?: ContentSectionLayout
-  className?: string
-  button?: boolean
-}
+  id: string;
+  heading: string;
+  images: ContentSectionImage[];
+  rows: SectionRow[];
+  layout?: ContentSectionLayout;
+  className?: string;
+  button?: boolean;
+};
 
 function renderRow(row: SectionRow, index: number) {
-  if (row.type === 'text') {
+  if (row.type === "text") {
     return (
       <p
         key={`${row.type}-${index}`}
@@ -39,44 +39,46 @@ function renderRow(row: SectionRow, index: number) {
       >
         {row.value}
       </p>
-    )
+    );
   }
 
   return (
-    <div
-      key={`${row.type}-${index}`}
-      className="space-y-3"
-    >
+    <div key={`${row.type}-${index}`} className="space-y-3">
       {row.title ? (
-        <h3 className="text-base md:text-xl font-semibold text-espresso">{row.title}</h3>
+        <h3 className="text-base md:text-xl font-semibold text-espresso">
+          {row.title}
+        </h3>
       ) : null}
 
-      <ul className={row.columns === 2 ? "grid grid-cols-2 gap-2 text-base md:text-xl leading-7 text-walnut" : "space-y-2 text-base md:text-xl leading-7 text-walnut"}>
+      <ul
+        className={
+          row.columns === 2
+            ? "grid grid-cols-2 gap-2 text-base md:text-xl leading-7 text-walnut"
+            : "space-y-2 text-base md:text-xl leading-7 text-walnut"
+        }
+      >
         {row.items.map((item) => (
-          <li
-            key={item}
-            className="flex gap-2"
-          >
+          <li key={item} className="flex gap-2">
             <Nut className="mt-1 h-5 w-5 shrink-0 text-[#4A7C4E]" />
             <span>{item}</span>
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 function SectionMedia({
   images,
   heading,
 }: {
-  images: ContentSectionImage[]
-  heading: string
+  images: ContentSectionImage[];
+  heading: string;
 }) {
   if (images.length <= 1) {
-    const image = images[0]
+    const image = images[0];
 
-    if (!image) return null
+    if (!image) return null;
 
     return (
       <div className="relative mx-auto w-[calc(100%-30px)] max-w-sm">
@@ -91,7 +93,7 @@ function SectionMedia({
           />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -100,7 +102,7 @@ function SectionMedia({
       <Carousel
         opts={{
           loop: true,
-          align: 'start',
+          align: "start",
         }}
         className="relative z-10 w-full"
         aria-label={`${heading} image gallery`}
@@ -132,7 +134,7 @@ function SectionMedia({
         </CarouselNext>
       </Carousel>
     </div>
-  )
+  );
 }
 
 export function ContentSection({
@@ -140,26 +142,20 @@ export function ContentSection({
   heading,
   images,
   rows,
-  layout = 'row',
+  layout = "row",
   className,
   button = false,
 }: ContentSectionProps) {
-  const isReverse = layout === 'reverse'
+  const isReverse = layout === "reverse";
 
   return (
-    <section
-      id={id}
-      className={cn("scroll-mt-24 lg:scroll-mt-8", className)}
-    >
+    <section id={id} className={cn("scroll-mt-24 lg:scroll-mt-8", className)}>
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-        <div className={isReverse ? 'lg:order-2' : undefined}>
-          <SectionMedia
-            images={images}
-            heading={heading}
-          />
+        <div className={isReverse ? "lg:order-2" : undefined}>
+          <SectionMedia images={images} heading={heading} />
         </div>
 
-        <div className={isReverse ? 'lg:order-1' : undefined}>
+        <div className={isReverse ? "lg:order-1" : undefined}>
           <div className="mx-auto max-w-2xl space-y-6">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-espresso">
               {heading}
@@ -177,6 +173,8 @@ export function ContentSection({
           </div>
         </div>
       </div>
+
+      <div className="w-full h-[9px] bg-gradient-to-r from-cream via-pistachio to-cream mt-10 md:mt-20"></div>
     </section>
-  )
+  );
 }

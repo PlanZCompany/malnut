@@ -20,6 +20,7 @@ export type SiteSectionConfig = {
   layout: SectionLayout;
   rows: SectionRow[];
   button?: boolean;
+  products?: boolean;
 };
 
 export const SECTION_LAYOUT: Record<string, SectionLayout> = {
@@ -218,6 +219,7 @@ export const SITE_SECTION_LIST: SiteSectionConfig[] = [
     images: SECTION_IMAGES.products,
     layout: SECTION_LAYOUT.products,
     rows: SITE_SECTIONS.products.rows,
+    products: true,
   },
   {
     id: SITE_SECTIONS.clients.id,

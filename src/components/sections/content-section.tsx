@@ -13,6 +13,9 @@ import {
 } from "../ui/carousel";
 import { ContactButton } from "../sute-sidebar";
 
+import Products from "@/components/sections/products";
+import { bgProducts, bgProductsType } from "@/constants/bgProducts";
+
 export type ContentSectionLayout = "row" | "reverse";
 
 export type ContentSectionImage = {
@@ -28,6 +31,7 @@ export type ContentSectionProps = {
   layout?: ContentSectionLayout;
   className?: string;
   button?: boolean;
+  products?: boolean;
 };
 
 function renderRow(row: SectionRow, index: number) {
@@ -145,6 +149,7 @@ export function ContentSection({
   layout = "row",
   className,
   button = false,
+  products = false,
 }: ContentSectionProps) {
   const isReverse = layout === "reverse";
 
@@ -174,6 +179,11 @@ export function ContentSection({
         </div>
       </div>
 
+      {!!products && (
+        <div className="w-full overflow-x-clip">
+          <Products data={bgProducts as bgProductsType[]} source="bg" />
+        </div>
+      )}
       <div className="w-full h-[9px] bg-gradient-to-r from-cream via-pistachio to-cream mt-10 md:mt-20"></div>
     </section>
   );

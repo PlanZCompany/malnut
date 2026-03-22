@@ -28,6 +28,7 @@ export default function Page() {
                   rows={section.rows}
                   layout={section.layout}
                   button={section.button}
+                  products={section.products}
                 />
               ))}
             </div>

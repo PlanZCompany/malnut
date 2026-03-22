@@ -94,6 +94,7 @@ function SectionMedia({
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 33vw"
+            unoptimized
           />
         </div>
       </div>
@@ -121,6 +122,7 @@ function SectionMedia({
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 33vw"
+                  unoptimized
                 />
               </div>
             </CarouselItem>

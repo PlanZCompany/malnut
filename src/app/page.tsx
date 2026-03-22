@@ -1,43 +1,47 @@
 import { ContentSection } from "@/components/sections/content-section";
 import { SiteSidebar } from "@/components/sute-sidebar";
 import { Button } from "@/components/ui/button";
+import { WhatsAppFab } from "@/components/ui/whats-app-cta";
 import { SITE_SECTION_LIST, HERO_CONFIG } from "@/data/site-config";
 import { CONTACT_INFO } from "@/data/site-content";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-cream text-foreground">
-      <SiteSidebar
-        logoSrc="/images/logo.png"
-        logoAlt="Malnut logo"
-        companyName="Malnut"
-      />
+    <>
+      <div className="min-h-screen bg-cream text-foreground">
+        <SiteSidebar
+          logoSrc="/images/logo.png"
+          logoAlt="Malnut logo"
+          companyName="Malnut"
+        />
 
-      <main className="lg:pl-72 ">
-        <HeroSection />
+        <main className="lg:pl-72 ">
+          <HeroSection />
 
-        <div className="relative z-10 bg-cream">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-            <div className="space-y-16 lg:space-y-24">
-              {SITE_SECTION_LIST.map((section) => (
-                <ContentSection
-                  key={section.id}
-                  id={section.id}
-                  heading={section.heading}
-                  images={section.images}
-                  rows={section.rows}
-                  layout={section.layout}
-                  button={section.button}
-                  products={section.products}
-                />
-              ))}
+          <div className="relative z-10 bg-cream">
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+              <div className="space-y-16 lg:space-y-24">
+                {SITE_SECTION_LIST.map((section) => (
+                  <ContentSection
+                    key={section.id}
+                    id={section.id}
+                    heading={section.heading}
+                    images={section.images}
+                    rows={section.rows}
+                    layout={section.layout}
+                    button={section.button}
+                    products={section.products}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
 
-          <SiteFooter />
-        </div>
-      </main>
-    </div>
+            <SiteFooter />
+          </div>
+        </main>
+      </div>
+      <WhatsAppFab />
+    </>
   );
 }
 

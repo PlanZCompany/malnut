@@ -72,6 +72,7 @@ function SidebarBrand({ logoSrc, logoAlt, companyName }: SiteSidebarProps) {
           className="object-contain"
           sizes="40px"
           priority
+          unoptimized
         />
       </div>
 

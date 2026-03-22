@@ -29,6 +29,7 @@ const GenericImage = ({
         sizes={sizes}
         className={imageClassName || ""}
         priority={priority}
+        unoptimized
       />
     </div>
   );

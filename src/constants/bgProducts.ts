@@ -29,7 +29,7 @@ export const bgProducts = [
     ],
   },
   {
-    src: '/images/cashews.webp',
+    src: '/images/cashew-nuts.png',
     group: 'CASHEWS',
     products: [
       {

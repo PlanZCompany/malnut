@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SITE_NAV_ITEMS } from "@/data/site-config";
 import { CONTACT_INFO } from "@/data/site-content";
+import { ContactPhoneLink } from "./contact-phone-link";
 
 type SiteSidebarProps = {
   logoSrc: string;
@@ -53,7 +54,11 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-export function ContactButton({ size = 'default' }: { size?: 'default' | 'lg' }) {
+export function ContactButton({
+  size = "default",
+}: {
+  size?: "default" | "lg";
+}) {
   return (
     <Button asChild className="w-full" size={size}>
       <a href={`mailto:${CONTACT_INFO.email}`}>Contact</a>
@@ -110,6 +115,12 @@ export function SiteSidebar({
 
           <div className="pt-6 pb-6 px-4">
             <ContactButton />
+            <div className="mt-4">
+              <ContactPhoneLink className="flex items-center gap-2 text-sm font-medium hover:underline">
+                <Phone className="h-4 w-4" />
+                +356 99794877
+              </ContactPhoneLink>
+            </div>
           </div>
         </div>
       </aside>
@@ -143,6 +154,13 @@ export function SiteSidebar({
 
                 <div className="mt-6">
                   <ContactButton />
+                </div>
+
+                <div className="mt-4">
+                  <ContactPhoneLink className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
+                    <Phone className="h-4 w-4" />
+                    +356 99794877
+                  </ContactPhoneLink>
                 </div>
               </div>
             </SheetContent>

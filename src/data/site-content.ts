@@ -39,7 +39,7 @@ export type SectionRow =
 export const COMPANY_NAME = "Malnut";
 
 export const CONTACT_INFO: ContactInfo = {
-  email: "mtltd@gmail.com",
+  email: "mtltd.work@gmail.com",
 };
 
 export const NAV_ITEMS: NavItem[] = [

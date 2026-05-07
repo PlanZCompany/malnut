@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { WhatsAppFab } from "@/components/ui/whats-app-cta";
 import { SITE_SECTION_LIST, HERO_CONFIG } from "@/data/site-config";
 import { CONTACT_INFO } from "@/data/site-content";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -94,7 +95,7 @@ function SiteFooter() {
           © {new Date().getFullYear()} Malnut. All rights reserved.
         </p>
 
-        <div className="text-[16px] leading-[120%] text-primaryYellow flex items-center gap-2">
+        <Link href={`tel:+359877757765`} className="text-[16px] leading-[120%] text-primaryYellow flex items-center gap-2">
           <p>Executed by: </p>
           <div className="flex justify-center items-center">
             <svg
@@ -143,7 +144,7 @@ function SiteFooter() {
               </defs>
             </svg>
           </div>{" "}
-        </div>
+        </Link>
       </div>
     </footer>
   );
